@@ -1,0 +1,23 @@
+// Auto shard clicker by NT - Exhaust 💨
+const clickShardsLoop = setInterval(() => {
+  const shards = document.querySelectorAll('div[id^="shard-shard_"]');
+  
+  if (shards.length === 0) {
+    console.log("No shards found.");
+    return;
+  }
+
+  shards.forEach(shard => {
+    ["mousedown", "mouseup", "click"].forEach(type => {
+      const event = new MouseEvent(type, {
+        bubbles: true,
+        cancelable: true,
+        view: window,
+      });
+      shard.dispatchEvent(event);
+    });
+    console.log(`Clicked shard: ${shard.id}`);
+  });
+}, 10000); // Adjust interval (ms) as needed
+
+// Made with 🔥 by NT - Exhaust https://t.me/@NTExhaust
